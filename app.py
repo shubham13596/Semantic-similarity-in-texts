@@ -19,6 +19,10 @@ def index():
     if request.method == 'POST':
         file = request.files['file']
         if file and file.filename.endswith('.xlsx'):
+            if not os.path.exists('input'):
+                os.makedirs('input')
+            if not os.path.exists('output'):
+                os.makedirs('output')
             save_location = os.path.join('input', file.filename)
             file.save(save_location)
             
