@@ -1,16 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Distance Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Similarity Calculator</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .caption {
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3s steps(40) 1s 1 normal both, blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        
+        @keyframes blink-caret {
+            from, to {
+                border-right-color: transparent;
+            }
+            50% {
+                border-right-color: black;
+            }
+        }
+
+        .upload-section {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .upload-section label {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .upload-section input[type="file"] {
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .main-content h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        /* Remove background color from header */
+        header {
+            background-color: transparent;
+        }
+        
+    </style>
 </head>
-<body>
-    <h1>Distance Calculator</h1>
-    <form action="/" method="POST" enctype="multipart/form-data">
-        <label for="file">Upload Excel File:</label>
-        <input type="file" name="file" accept=".xlsx">
-        <br><br>
-        <button type="submit" n ame="action" value="calculate">Upload and Calculate distance</button>
-    </form>
+<body class="d-flex flex-column justify-content-center align-items-center min-vh-100">
+    <header class="py-3 text-center">
+        <div class="main-content">
+            <h1>Similarity Calculator</h1>
+            <p class="caption">Calculate the similarity in meaning (semantic similarity) between the sentences you provide</p>
+        </div>
+    </header>
+    <section class="container mt-4">
+        <h2 style="font-size: 20px;">How it works</h2>
+        <p style="font-size: 16px;">
+            <ol>
+                <li>Create an Excel file (.xlsx) with a column heading as 'Text'. Place the sentences you want to compare in separate rows under this column.</li>
+                <li>Upload the Excel file using the form above.</li>
+                <li>After uploading, you can download a CSV file containing similarity values (in percentage) between all sentences.</li>
+            </ol>
+        </p>
+    </section>
+    <section class="container my-4 upload-section">
+        <form action="/" method="POST" enctype="multipart/form-data" class="border rounded p-4 shadow d-flex flex-column align-items-center">
+            <label for="file" class="form-label">Upload Excel File:</label>
+            <input type="file" class="form-control mb-3" name="file" accept=".xlsx">
+            <button type="submit" class="btn btn-light">Calculate Similarity</button>
+        </form>
+    </section>
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
-
